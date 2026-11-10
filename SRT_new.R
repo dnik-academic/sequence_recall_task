@@ -341,14 +341,15 @@ ggplot(subj_means, aes(x = factor(seq_length), y = acc, fill = language)) +
                    y = chance, yend = chance),
                inherit.aes = FALSE, linetype = "dashed") +
   facet_wrap(~condition, labeller = as_labeller(
-    c(pitch_accent = "Lexical pitch accent", segmental = "Segmental control"))) +
+    c(pitch_accent = "Lexical pitch accent", segmental = "Segmental"))) +
   scale_y_continuous(limits = c(0, 1), labels = scales::percent) +
   labs(x = "Sequence length",
-       y = "Proportion correct (whole sequence; reversals scored correct)",
+       y = "Proportion correct",
        fill = "Group") +
   theme_bw(base_size = 12)
 
 ggsave("/Users/dusannikolic/Documents/PAPERS/2026/SEQUENCE_RECALL_TASK/RESULTS_NEW/figure1_accuracy.pdf", width = 8, height = 4.5)
+ggsave("/Users/dusannikolic/Documents/PAPERS/2026/SEQUENCE_RECALL_TASK/RESULTS_NEW/figure1_accuracy.png", width = 8, height = 4.5, dpi = 300)
 
 # Figure 2: pitch-accent sub-types by group
 subj_acc_types <- dat_pa %>%
@@ -368,6 +369,7 @@ ggplot(subj_acc_types, aes(x = contrast_type, y = acc, fill = language)) +
   theme_bw(base_size = 12)
 
 ggsave("/Users/dusannikolic/Documents/PAPERS/2026/SEQUENCE_RECALL_TASK/RESULTS_NEW/figure2_accent_types.pdf", width = 7, height = 4.5)
+ggsave("/Users/dusannikolic/Documents/PAPERS/2026/SEQUENCE_RECALL_TASK/RESULTS_NEW/figure2_accent_types.png", width = 7, height = 4.5, dpi = 300)
 
 sessionInfo()
 save(dat, m_full, m_full_strict, m_pa, m_seg, m_acc,
